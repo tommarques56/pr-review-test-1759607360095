@@ -1,20 +1,23 @@
-// Test file with some issues
+// Updated main.js with some changes
 function calculateSum(a, b) {
-    // Missing error handling
+    // Added basic validation
+    if (typeof a !== 'number' || typeof b !== 'number') {
+        throw new Error('Invalid input types');
+    }
     return a + b;
 }
 
 function processData(data) {
-    // Inconsistent variable naming
-    let result = [];
-    for (let i = 0; i < data.length; i++) {
-        result.push(data[i] * 2);
+    // Fixed variable naming and added validation
+    let processedResults = [];
+    if (!Array.isArray(data)) {
+        throw new Error('Data must be an array');
     }
-    return result;
+    for (let i = 0; i < data.length; i++) {
+        processedResults.push(data[i] * 2);
+    }
+    return processedResults;
 }
 
-// Unused variable
-const unusedVar = "This is not used";
-
-// Missing semicolon
-console.log("Hello World")
+// Removed unused variable
+console.log("Hello World"); // Added missing semicolon
